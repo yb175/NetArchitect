@@ -1,0 +1,17 @@
+{
+  "profile": "metro-man",
+  "sites": [
+    { "id": "HQ", "name": "HQ Node", "role": "hq", "distanceKm": 21, "users": 120 },
+    { "id": "REMOTE-1", "name": "Remote One", "role": "remote", "distanceKm": 25, "users": 80 },
+    { "id": "REMOTE-2", "name": "Remote Two", "role": "remote", "distanceKm": 30, "users": 60 }
+  ],
+  "evplBandwidthMbps": 200,
+  "latencyTargetMs": 5,
+  "qosClasses": ["ef-voice", "af31-transactional", "best-effort"],
+  "dualHomedFailover": false,
+  "rootBlockCidr": "10.60.0.0/16",
+  "vlanRequests": [
+    { "name": "MGMT", "purpose": "management", "hosts": 10 },
+    { "name": "USERS", "purpose": "staff", "hosts": 260 }
+  ]
+}

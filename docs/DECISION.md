@@ -26,3 +26,13 @@ A plain-language decision log. For formal ADR-style entries see `ARCHITECTURE_DE
 | 20 | **No microservices / databases / message brokers, whatever the future holds** | Optional future work (a web GUI, a diff engine) can all be built on the same orchestrator function; nothing here forces infrastructure changes later. |
 
 *Spelling note: filed as `DECISION.md`; the requested filename `desicion.md` would have been a typo.*
+
+## Added during the Foundation & Profiles phase
+
+| # | Decision | Why it was taken |
+|---|----------|------------------|
+| 21 | **`cloudVpc` block is the sole canonical cloud definition; `cloud-vpc` city role rejected by validation** | Kills the earlier contract wrinkle where cloud could be defined twice and drift apart. Validation error code `CLOUD_ROLE_IN_CITIES` makes the rule observable; the WAN preset now carries 4 cities + a separate canonical VPC block (with `iotNodes`). |
+| 22 | **Domain models are typed aliases over frozen contracts (`src/domain/`)** | The assigned model list (NetworkRequirements, NetworkDesign, …) maps 1:1 to approved contract types instead of duplicating them — zero drift possible; `docs/DATA_CONTRACTS.md` carries the mapping table. |
+| 23 | **Nominal-count and exact-boundary values become advisories, not errors** | Keeps validation useful for custom scenarios while preserving the assignment's boundary semantics (inclusive limits) — advisories flow into the explain log so reviewers see them. |
+| 24 | **Capacity-conflict pre-check in validation** | A VLAN demand exceeding the root block is a user-facing arithmetic mismatch (capacity check only — no subnet carving happens in the profile manager). It fails fast with a message naming what the VLSM engine would later raise. |
+| 25 | **RFC 3021 wins over "blind" /30-style carving (VLSM engine)** | A 2-host demand maps to /31 (both addresses usable, no network/broadcast dedup), 1 host to /32; everything ≥ 3 remains on the classical two-reservation math. The spec explicitly forbids blindly applying the 2-address reservation to /31 and /32 — the downward prefix scan enforces minimal blocks. Waiting: downward scan caught a real AI-coded bug (upward scan always mapped to /0) — filed for the AI audit log. |

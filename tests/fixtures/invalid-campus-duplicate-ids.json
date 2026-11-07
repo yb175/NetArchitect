@@ -1,0 +1,13 @@
+{
+  "profile": "campus-lan",
+  "buildings": [
+    { "id": "BLD-A", "name": "Building A", "backboneRunMeters": 85, "floors": 2, "accessRunMeters": 90, "endpoints": 400 },
+    { "id": "BLD-A", "name": "Building A2", "backboneRunMeters": 100, "floors": 3, "accessRunMeters": 100, "endpoints": 300 },
+    { "id": "BLD-B", "name": "Building B", "backboneRunMeters": 120, "floors": 2, "accessRunMeters": 90, "endpoints": 300 }
+  ],
+  "vlanRequests": [
+    { "name": "MGMT", "purpose": "management", "hosts": 20 },
+    { "name": "STAFF", "purpose": "staff", "hosts": 600 }
+  ],
+  "rootBlockCidr": "10.50.0.5/16"
+}
