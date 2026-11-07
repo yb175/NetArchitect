@@ -4,13 +4,13 @@
     { "id": "CITY-D", "name": "Delhi HQ (Logistics Control)", "role": "hq",     "devices": 600, "transport": "ipsec-internet" },
     { "id": "CITY-M", "name": "Mumbai Distribution",          "role": "branch", "devices": 450, "transport": "ipsec-internet" },
     { "id": "CITY-K", "name": "Kolkata Scanners",             "role": "branch", "devices": 350, "transport": "ipsec-internet" },
-    { "id": "CITY-C", "name": "Chennai Scanners",             "role": "branch", "devices": 400, "transport": "ipsec-internet" },
-    { "id": "CLOUD",  "name": "AWS VPC (Analytics)",          "role": "cloud-vpc", "devices": 200, "transport": "ipsec-internet" }
+    { "id": "CITY-C", "name": "Chennai Scanners",             "role": "branch", "devices": 400, "transport": "ipsec-internet" }
   ],
   "cloudVpc": {
     "provider": "aws",
     "vpcCidr": "172.20.0.0/16",
-    "vpnPeerPublicIps": ["203.0.113.10", "203.0.113.11"]
+    "vpnPeerPublicIps": ["203.0.113.10", "203.0.113.11"],
+    "iotNodes": 200
   },
   "ikeVersion": 2,
   "multiAreaOspf": true,

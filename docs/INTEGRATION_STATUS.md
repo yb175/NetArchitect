@@ -2,12 +2,16 @@
 
 Updated at every integration. `main` is always required to typecheck + test + run examples.
 
-## Current state: SCAFFOLDED (contracts phase)
+## Current state: FOUNDATION & PROFILES PHASE LANDED (contract amendments A+1/A+2)
 - [x] Repository scaffold (package.json, tsconfig, vitest, gitignore)
-- [x] Shared contracts authored and typechecking (`src/contracts/*`)
-- [x] Three preset fixtures authored (`presets/*.json`)
-- [x] HLD, LLD, DATA_CONTRACTS, ASSUMPTIONS, this file, ARCHITECTURE_DECISIONS
-- [ ] Specialist module implementations (pending agent assignment)
+- [x] Shared contracts authored and typechecking (`src/contracts/*`) — v1.1
+- [x] Three preset fixtures authored (`presets/*.json`) — global-wan cloud canonicalized
+- [x] Domain models + enums as typed aliases (`src/domain/{models,enums}`)
+- [x] Profiles: loader (preset + custom), catalog, documented defaults (`src/profiles`)
+- [x] Validation: Zod shapes + semantic checks + link-endpoint checks (`src/validation`)
+- [x] 41 tests passing; `example:profiles` runnable
+- [x] HLD, LLD, DATA_CONTRACTS, ASSUMPTIONS, DECISION, FLOW, INTEGRATION_STATUS, ARCHITECTURE_DECISIONS
+- [ ] Specialist wave-1 module implementations (media / topology / vlan+vlsm / routing)
 - [ ] Config generation + exports
 - [ ] Verification engine + failure-path tests
 - [ ] GNS3/Packet Tracer evidence for 3 scenarios
@@ -16,8 +20,9 @@ Updated at every integration. `main` is always required to typecheck + test + ru
 ## Module status board
 | Module | Owner | Status | Tests | Example |
 |---|---|---|---|---|
-| contracts | Lead Architect | done (v1.0, frozen) | — | — |
-| profiles | Agent-A | pending | | |
+| contracts | Lead Architect | done (v1.1 — amendments A+1 type exports, A+2 cloudVpc.iotNodes) | — | — |
+| profiles | Foundation/Profiles agent | **done** — loader + defaults + catalog | 41 tests passing (`tests/profiles.test.ts`, `tests/validation.test.ts`) | `examples/run-profiles-demo.ts` |
+| domain models | Foundation/Profiles agent | done — typed aliases + DeviceInterface/NetworkDesign | alias honesty tests | same example |
 | media | Agent-B | pending | | |
 | topology | Agent-C | pending | | |
 | vlan | Agent-D | pending | | |

@@ -33,6 +33,23 @@ request to the Lead Architect, followed by a documentation update.
 - `ReachabilityError` (optical reach)
 - `ValidationError` (Zod aggregation)
 
+## Domain-alias mapping (`src/domain/`)
+The required model vocabulary maps 1:1 to frozen contracts (no duplication):
+
+| Domain model name | Contract type |
+|---|---|
+| `NetworkRequirements` | `NetArchInput` |
+| `RequirementsEnvelope` | `ValidatedRun` |
+| `NetworkDesign` | aggregate of `Site`/`Device`/`NetworkLink`/`VLAN`/`SubnetAllocation`/`RoutingPlan`/`DeviceConfiguration`/`NetworkDecision` |
+| `NetworkLink` | `Link` |
+| `VLAN` | `VlanItem` |
+| `SubnetRequest` | `VlsmRequest` |
+| `SubnetAllocation` | `SubnetPlanItem` |
+| `RoutingDomain` | `OspfAreaPlan` |
+| `NetworkDecision` | `ExplainRecord` |
+| `DeviceConfiguration` | `DeviceConfig` |
+| `InputSource` | `InputSourceKind` (contract amendment A+1) |
+
 ## Change policy
 1. Agent requests change with its proposed signature diff.
 2. Architect evaluates blast radius across the ownership matrix.

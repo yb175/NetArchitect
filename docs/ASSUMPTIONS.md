@@ -1,5 +1,4 @@
 # NetArchitect — Assumptions
-
 Recorded so reviewers can see every judgement call the design makes. Each assumption is
 testable or was checked against a primary reference.
 
@@ -27,3 +26,26 @@ testable or was checked against a primary reference.
    out of scope for metro per assignment wording.
 10. **OSPF areas for WAN**: backbone city = area 0, branch cities in area 1..n, cloud VPC
     reachable only through BGP+IPsec — never advertised into OSPF wholesale.
+
+## Agent-added assumptions (Foundation & Profiles phase)
+
+11. **Configurable defaults where the assignment is silent** (`src/profiles/defaults.ts` —
+    surfaced in every report, never silently baked into engine math):
+    | Default | Value | Why |
+    |---|---|---|
+    | endpoints per AP | 24 | standard wireless density for classroom/office campus |
+    | access-port headroom | 20 % | growth room without oversized chassis |
+    | backbone headroom | 20 % | corridor adjustment for riser distance |
+    | native VLAN | 99, unused | 802.1Q hardening practice |
+    | campus backbone handoff | 10 Gbps | matches the Cat6a/OM4 rule table's 10G class |
+    | metro EVPL default | 200 Mbps, 1000 Mbps handoff | preset value; physical handoff one class above |
+    | WAN private AS | 65001 | RFC 6996 private AS space |
+12. **Cloud-VPC canonicalization (ADR-009)**: the `cloudVpc` block is the single cloud
+    definition; a `cloud-vpc` role inside `cities` is a validation error
+    (`CLOUD_ROLE_IN_CITIES`). The preset was corrected accordingly (4 cities + separate
+    `cloudVpc` with `iotNodes`).
+13. **Nominal-count drift is advisory, never an error**: 1,600 campus endpoints, 450 metro
+    users, 2,000 WAN nodes are the assignment's nominals; custom runs that deviate get a
+    documented advisory instead of a rejection.
+14. **Exact-boundary values produce advisories** (100 m, 400 m, 15/35 km, 5 ms): validation
+    accepts them and the engines decide inclusively; users see the boundary in the report.

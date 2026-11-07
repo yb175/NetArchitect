@@ -26,3 +26,12 @@ A plain-language decision log. For formal ADR-style entries see `ARCHITECTURE_DE
 | 20 | **No microservices / databases / message brokers, whatever the future holds** | Optional future work (a web GUI, a diff engine) can all be built on the same orchestrator function; nothing here forces infrastructure changes later. |
 
 *Spelling note: filed as `DECISION.md`; the requested filename `desicion.md` would have been a typo.*
+
+## Added during the Foundation & Profiles phase
+
+| # | Decision | Why it was taken |
+|---|----------|------------------|
+| 21 | **`cloudVpc` block is the sole canonical cloud definition; `cloud-vpc` city role rejected by validation** | Kills the earlier contract wrinkle where cloud could be defined twice and drift apart. Validation error code `CLOUD_ROLE_IN_CITIES` makes the rule observable; the WAN preset now carries 4 cities + a separate canonical VPC block (with `iotNodes`). |
+| 22 | **Domain models are typed aliases over frozen contracts (`src/domain/`)** | The assigned model list (NetworkRequirements, NetworkDesign, …) maps 1:1 to approved contract types instead of duplicating them — zero drift possible; `docs/DATA_CONTRACTS.md` carries the mapping table. |
+| 23 | **Nominal-count and exact-boundary values become advisories, not errors** | Keeps validation useful for custom scenarios while preserving the assignment's boundary semantics (inclusive limits) — advisories flow into the explain log so reviewers see them. |
+| 24 | **Capacity-conflict pre-check in validation** | A VLAN demand exceeding the root block is a user-facing arithmetic mismatch (capacity check only — no subnet carving happens in the profile manager). It fails fast with a message naming what the VLSM engine would later raise. |

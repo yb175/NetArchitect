@@ -107,8 +107,10 @@ export const GlobalWanInput = z.object({
   cloudVpc: z.object({
     provider: z.enum(["aws", "azure", "gcp"]),
     vpcCidr: z.string().regex(/^(\d{1,3}\.){3}\d{1,3}\/\d{1,2}$/),
-    /** S2S VPN termination endpoints inside the VPC (e.g. VGW tunnel IPs). */
+    /** S2S VPN termination endpoints inside the VPC (e.g., VGW tunnel IPs). */
     vpnPeerPublicIps: z.array(z.string().ip()).min(1).max(4),
+    /** Additive amendment A+2 (architect): IoT/scanner nodes living in the VPC. */
+    iotNodes: z.number().int().min(0).max(5_000).default(0),
   }),
   ikeVersion: z.literal(2).default(2),
   /** Cities beyond area 0 get areas 1..n; backbone + BGP connect them. */
@@ -133,6 +135,10 @@ export type NetArchInput = z.infer<typeof NetArchInput>;
 
 /** How the input reached the system (affects report headers only). */
 export const InputSource = z.enum(["preset", "custom"]).default("preset");
+
+/** Additive amendment A+1 (architect): paired type exports for value-only consts. */
+export type InputSourceKind = z.infer<typeof InputSource>;
+export type QosClassKind = z.infer<typeof QosClass>;
 
 export interface ValidatedRun {
   input: NetArchInput;

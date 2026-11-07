@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "example:profiles": "tsx examples/run-profiles-demo.ts",
     "run:campus": "tsx examples/run-campus-lan.ts",
     "run:metro": "tsx examples/run-metro-man.ts",
     "run:wan": "tsx examples/run-global-wan.ts",
