@@ -1,0 +1,19 @@
+{
+  "profile": "metro-man",
+  "sites": [
+    { "id": "HQ",     "name": "FinTech HQ (Colo-A)",   "role": "hq",     "distanceKm": 18, "users": 200 },
+    { "id": "REMOTE-1", "name": "Branch Colombo East", "role": "remote", "distanceKm": 27, "users": 150 },
+    { "id": "REMOTE-2", "name": "Branch Harbour Front", "role": "remote", "distanceKm": 34, "users": 100 }
+  ],
+  "evplBandwidthMbps": 200,
+  "latencyTargetMs": 5,
+  "qosClasses": ["ef-voice", "af31-transactional", "best-effort"],
+  "dualHomedFailover": true,
+  "rootBlockCidr": "10.30.0.0/16",
+  "vlanRequests": [
+    { "name": "MGMT",     "purpose": "management",      "hosts": 10 },
+    { "name": "USERS",    "purpose": "staff",           "hosts": 450 },
+    { "name": "TXN-SERVERS", "purpose": "servers",      "hosts": 40 },
+    { "name": "BRANCH-X", "purpose": "students",        "hosts": 250 }
+  ]
+}

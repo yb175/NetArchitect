@@ -1,0 +1,18 @@
+{
+  "profile": "campus-lan",
+  "buildings": [
+    { "id": "BLD-A", "name": "Building A (Engineering)", "backboneRunMeters": 85, "floors": 3, "accessRunMeters": 90, "endpoints": 620 },
+    { "id": "BLD-B", "name": "Building B (Library)", "backboneRunMeters": 190, "floors": 4, "accessRunMeters": 90, "endpoints": 580 },
+    { "id": "BLD-C", "name": "Building C (Admin)", "backboneRunMeters": 380, "floors": 2, "accessRunMeters": 88, "endpoints": 400 }
+  ],
+  "vlanRequests": [
+    { "name": "MGMT",   "purpose": "management", "hosts": 20 },
+    { "name": "STAFF",  "purpose": "staff",      "hosts": 650 },
+    { "name": "STUDENTS", "purpose": "students", "hosts": 850 },
+    { "name": "SERVERS", "purpose": "servers",   "hosts": 60 },
+    { "name": "PRINTERS", "purpose": "iot",      "hosts": 20 }
+  ],
+  "rootBlockCidr": "10.20.0.0/16",
+  "collapsedCore": true,
+  "ospfSingleArea": true
+}

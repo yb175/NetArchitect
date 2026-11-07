@@ -1,0 +1,29 @@
+{
+  "name": "netarchitect",
+  "version": "0.1.0",
+  "description": "NetArchitect: algorithmic network planning & self-explaining architecture engine (CIC-307)",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "bin": {
+    "netarch": "dist/orchestrator/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "run:campus": "tsx examples/run-campus-lan.ts",
+    "run:metro": "tsx examples/run-metro-man.ts",
+    "run:wan": "tsx examples/run-global-wan.ts",
+    "run:custom": "tsx examples/run-custom-input.ts"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "tsx": "^4.17.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}
